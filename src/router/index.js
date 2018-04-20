@@ -27,7 +27,9 @@ import style from '@/components/style'
 import combine from '@/components/combine'
 import uploading from '@/components/uploading'
 import collectGoods from '@/components/collectGoods'
-import productSearch from '@/components/productSearch'
+import browsingHistory from '@/components/browsingHistory'
+import couponBox from '@/components/couponBox'
+import myOrder from '@/components/myOrder'
 import userAgreement from '@/components/userAgreement'
 import searchResult from '@/components/searchResult'
 import searchResults from '@/components/searchResults'
@@ -173,15 +175,25 @@ export default new Router({
         name:'getProductDate', //上架时间
         component:getProductDate,
       },
+      // {
+      //   path:'/',
+      //   name:'collectGoods',  //商品收藏
+      //   component:collectGoods,
+      // },
+      // {
+      //   path:'/',
+      //   name:'browsingHistory', //浏览记录
+      //   component:browsingHistory,
+      // },
+      // {
+      //   path:'/',
+      //   name:'couponBox',   //我的优惠券
+      //   component:couponBox,
+      // },
       {
         path:'/',
-        name:'collectGoods',  //商品收藏
-        component:collectGoods,
-      },
-      {
-        path:'/productSearch',
-        name:'productSearch',
-        component:productSearch,
+        name:'myOrder',   //我的订单
+        component:myOrder,
       }
       // {
       //   path:'/',

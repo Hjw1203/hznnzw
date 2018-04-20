@@ -1,28 +1,47 @@
 <template>
   <div>
-      <div class="header">
-          <router-link to='' class="back"></router-link>
-          <h1>商品收藏</h1>
-          <router-link class="search" to="productSearch"></router-link>
-          <span class="edit" @click="edit" ref="editBox">{{editText}}</span>
-      </div>
-      <div class="nav">
-          <ul>
-              <li>货源地
-                  <ul>
-                      <li>杭州</li>
-                      <li>濮院</li>
-                      <li>广州</li>
-                  </ul>
-              </li>
-              <li>在售商品
-                  <ul style="display:none">
-                      <li>在售商品</li>
-                      <li>下架商品</li>
-                  </ul>
-              </li>
-              <li>商品分类</li>
-          </ul>
+        <div class="header-search" v-show='searchShow'>
+            <div class="header1">
+                <div class="search-box">
+                    <input type="text" placeholder="搜索收藏商品" @keypress.enter="search" @input="del" v-model="keyWords">
+                    <span class="delete" v-show="deleteShow" @click="cancel" ref="del"></span>
+                </div>
+                <button @click='productSearch'>取消</button>
+            </div>
+        </div>
+      <div class="header-f">
+        <div class="header">
+            <router-link to='' class="back"></router-link>
+            <h1>商品收藏</h1>
+            <span class="search" @click='productSearch'></span>
+            <span class="edit" @click="edit" ref="editBox">{{editText}}</span>
+        </div>
+        <div class="nav">
+            <ul @click="checkNav">
+                <li data-id='1'>{{nav1}}
+                    <ul class="nav-item" @click="choose">
+                        <li data-area='杭州'>杭州</li>
+                        <li data-area='濮院'>濮院</li>
+                        <li data-area='广州'>广州</li>
+                    </ul>
+                </li>
+                <li data-id='2'>{{nav2}}
+                    <ul class="nav-item" @click="choose">
+                        <li data-status='在售商品'>在售商品</li>
+                        <li data-status='下架商品'>下架商品</li>
+                    </ul>
+                </li>
+                <li data-id='3'>{{nav3}}
+                    <div class="goods-class nav-item">
+                        <div>女装</div>
+                        <ul @click="choose">
+                            <li data-class='套装/套裙'>套装/套裙（1）</li>
+                            <li data-class='毛呢外套'>毛呢外套（1）</li>
+                        </ul>                        
+                    </div>
+                </li>
+            </ul>
+        </div>          
       </div>
     <div class="goods-collect" ref="main">
       <ul @click="checked">
@@ -94,33 +113,122 @@
             <div class="confirm">确认</div>            
         </div>
         <div class="undo" @click="boomJuice">取消</div>
-    </mt-popup>    
+    </mt-popup>
+    <div class="bg" ref="bg" @click="close"></div>
   </div>
 </template>
 <script>
 export default {
   data() {
       return {
+          searchShow:false,
+          deleteShow:false,
+          keyWords:'',
           shelve:true,
           unShelve:false,
           boomBox:false, //取消收藏盒子
           editText:'编辑',
+          nav1:'货源地',
+          nav2:'在售商品',
+          nav3:'商品分类',
       }
   },
   methods:{
+      productSearch() {
+          this.searchShow = !this.searchShow;
+      },
       edit() {
         this.$refs.main.classList.toggle('active');
         this.$refs.info.classList.toggle('info1');
       },
+      del(e) {
+          let len = e.target.value.length;
+          if(len>1) {
+              this.deleteShow = true;
+          } else {
+              this.deleteShow = false;
+          }
+      },
+      search(e) {
+          let keyWords = e.target.value;
+          this.$router.push({name: 'collectGoods'});
+      },
+      cancel() {
+          this.keyWords = '';
+          this.deleteShow = false;
+      },
       checked(e) {
         if(e.target.nodeName.toLowerCase()==='div' && e.target.dataset.flag ==='checkBox') {
-            e.target.parentNode.classList.add('checked');
+            e.target.parentNode.classList.toggle('checked');
             this.editText = '完成';
-            this.$refs.editBox.classList.add('clred');
+            this.$refs.editBox.classList.toggle('clred');
         }
       },
       boomJuice() {
           this.boomBox = !this.boomBox;
+      },
+      checkNav(e) {
+          if(e.target.nodeName.toLowerCase() === 'li' && e.target.dataset.id) {
+            this.$refs.bg.classList.remove('bg1');
+            let lis = e.target.parentNode.children;
+            let len = lis.length;
+            for(var i=0;i<len;i++) {
+                if(lis[i] != e.target) {
+                    lis[i].classList.remove('highlight');
+                    lis[i].children[0].classList.remove('hauto');                
+                }
+            }
+              e.target.classList.toggle('highlight');
+              e.target.children[0].classList.toggle('hauto');
+            for(var i=0;i<len;i++) {
+                if(lis[i].children[0].classList.contains('hauto')) {
+                this.$refs.bg.classList.add('bg1');    
+                }
+            }
+          }
+      },
+      close(e) {
+          e.target.classList.remove('bg1');
+          var items = document.querySelectorAll('.nav-item');
+          items.forEach(element => {
+              element.parentNode.classList.remove('highlight');
+              element.classList.remove('hauto');
+          });
+      },
+      choose(e) {
+          if(e.target.nodeName.toLowerCase() === 'li') {
+            if(e.target.dataset.area) {
+                e.target.classList.add('checked1');
+                this.nav1 = e.target.dataset.area;
+                let lis = e.target.parentNode.children;
+                let len = lis.length;
+                for(var i=0;i<len;i++) {
+                    if(lis[i] != e.target) {
+                        lis[i].classList.remove('checked1');
+                    }
+                }
+            } else if(e.target.dataset.status) {                
+                e.target.classList.add('checked1');
+                this.nav2 = e.target.dataset.status;
+                let lis = e.target.parentNode.children;
+                let len = lis.length;
+                for(var i=0;i<len;i++) {
+                    if(lis[i] != e.target) {
+                        lis[i].classList.remove('checked1');
+                    }
+                }
+            } else if (e.target.dataset.class) {
+                e.target.classList.add('checked2');
+                this.nav3 = e.target.dataset.class;
+                let lis = e.target.parentNode.children;
+                let len = lis.length;
+                for(var i=0;i<len;i++) {
+                    if(lis[i] != e.target) {
+                        lis[i].classList.remove('checked2');
+                    }
+                }
+            }
+          }
       }
   }
 
@@ -169,7 +277,7 @@ export default {
         right:28px;
         color: #949494;
         font-family: PingFang SC Medium;
-        font-size: 28px;
+        font-size: 28px;/*px*/
     }
 }
 .nav {
@@ -186,21 +294,27 @@ export default {
             font-family: PingFang SC Medium;
             font-size: 30px;/*px*/
             color: #222;
-            background: url('../assets/images/arrow_down@2x.png') no-repeat 85% center;
+            background-image: url('../assets/images/arrow_down@2x.png');
+            background-repeat: no-repeat;
+            background-position: 85% center;
+            background-size: 12px 12px;/*px*/
             &:first-child {
                 background-position-x: 80%;
             }
-            ul {
+            >ul {
                 position: absolute;
                 z-index: 999;
                 width:100%;
-                top:168px;
-                li 
-                {
+                top:167px;
+                left:0;
+                max-height: 0;
+                transition:max-height .5s;
+                overflow: hidden;
+                li {
                     height: 83px;
                     line-height: 83px;
                     padding-left: 29px;
-                    columns:#222;
+                    color:#222;
                     font-family: PingFang SC Medium;
                     font-size: 30px;/*px*/
                     background-color: #fff;
@@ -212,170 +326,6 @@ export default {
                 }
             }
         }
-    }
-}
-.goods-collect {
-    margin-top: 14px;
-    li {
-        position: relative;
-        height: 235px;
-        background-color: #fff;
-        padding:24px 18px 28px 29px;
-        box-sizing: border-box;
-        border-bottom:1px solid #eaeaea;
-        .collect-time {
-            position: absolute;
-            right:18px;
-            top:110px;
-            font-size: 20px;/*px*/
-            color: #999;
-            float: right;
-            line-height: 41px;
-        }
-        .goods-img {
-            float: left;
-            width:180px;
-            height: 180px;
-        }
-        .goods-message {
-            float: left;
-            width:493px;
-            margin-left: 13px;
-        }
-        .keywords-box {
-        overflow: hidden;
-        font-family: PingFang SC Medium;
-        .keywords {
-            width:368px;
-            height: 32px;
-            float: left;
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            -webkit-line-clamp: 1;
-            overflow: hidden;
-            font-size: 28px;/*px*/
-            color: #222;
-            margin-left: 9px;
-        }
-        .city,.state {
-            float: left;
-            width:52px;
-            height: 28px;
-            line-height:28px;
-            text-align:center;
-            color:#fff;
-            font-size: 20px;/*px*/
-            border-radius: 4px;
-            vertical-align: top;
-            margin-top: 3px;
-        }
-        .city {
-            background-color: #fd626a;
-        }
-        .state {
-            background-color: #0bc67d;
-            margin-left: 2px;
-            }
-        } 
-        .describe {
-        color: #999;
-        font-size: 24px;/*px*/
-        line-height: 32px;
-        margin-top: 13px;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 1;
-        overflow: hidden;
-        } 
-        .goods-price {
-        margin-top: 10px;
-        .cost {
-        color: #ff464e;
-        font-size: 36px;/*px*/
-        font-weight: bold;
-        i {
-            font-style: normal;
-            font-weight: normal;
-            font-size: 24px;/*px*/
-        }
-        }
-        .send,.spread {
-        display: inline-block;
-        box-sizing: border-box;
-        border-radius: 4px;
-        height: 28px;
-        font-family: PingFang SC Medium;
-        font-size: 20px;/*px*/
-        vertical-align: top;
-        text-align: center;
-        line-height: 28px;
-        margin-top: 7px;
-        
-        }
-        .send {
-        width:94px;
-        border:1px solid #10bf5a;
-        color: #11c05a;
-        margin-left: 7px;
-        }
-        .spread {
-        width:54px;
-        color: #d7d7d7;
-        border:1px solid #d7d7d7;
-        margin-left: 3px;
-        }
-        } 
-        .goods-ico {
-        margin-top: 14px;
-        font-family: PingFang SC Medium;
-        span {
-            display: inline-block;
-            width:34px;
-            height: 32px;;
-            line-height:32px;
-            color: #fff;
-            text-align: center;
-            font-size: 20px;/*px*/
-            border-radius: 4px;
-            margin-right: 4px;
-        }
-        .ico1 {
-            background-color: #ff765b;
-        }
-        .ico2 {
-            background-color: #53cda3;
-        }
-        .ico3 {
-            background-color: #4ec6bf;
-        }
-        .ico4 {
-            background-color: #aa80d6;
-        }
-        }  
-    .find-similar {
-      position: absolute;
-      right:18px;
-      bottom:31px;
-      width:82px;
-      height: 30px;
-      line-height: 30px;
-      text-align: center;
-      border:1px solid #ebebeb;
-      border-radius: 4px;
-      font-family: PingFang SC Medium;
-      font-size: 20px;/*px*/
-      a {
-        color: #999;
-      }
-    } 
-    .shelves {
-        position: absolute;
-        bottom:31px;
-        right:444px;
-        font-family: PingFang SC Medium;
-        color: #949494;
-        font-size: 28px;/*px*/
-    }
     }
 }
 .active {
@@ -475,6 +425,124 @@ export default {
           margin-left: 19px;
           margin-top: 16px;
           margin-bottom: 20px;
+    }
+}
+.header-f {
+    position: fixed;
+    width:100%;
+    top:0;
+    z-index: 233;
+}
+.bg {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    background: #000;
+    display: none;
+}
+.goods-class {
+    position: absolute;
+    left:0;
+    top:167px;
+    width:100%;
+    background-color: #fff;
+    text-align: left;
+    max-height:0;
+    overflow: hidden;
+    transition: max-height .5s;
+    >div {
+        height: 77px;
+        line-height: 77px;
+        padding-left: 35px;
+        font-family: PingFang SC Medium;
+        color: #949494;
+        font-size: 24px;/*px*/
+    }
+    ul {
+        font-size: 0;
+        li {
+            display: inline-block;
+            font-family: PingFang SC Medium;
+            color: #222;
+            font-size: 26px;/*px*/
+            margin-bottom: 39px;
+            margin-left: 30px;
+            height: 49px;
+            line-height: 49px;
+            padding:0 20px;
+            background-color: #f4f4f4;
+
+        }
+    }
+}
+.highlight {
+    color: #ff464e !important;
+    background-image: url('../assets/images/arrow_top@2x.png') !important;
+}
+.hauto {
+    max-height: 550px !important;
+}
+.bg1 {
+    display: block;
+}
+.checked1 {
+    color:#ff464e !important;
+    background:#fff url('../assets/images/checked@2x.png') no-repeat 95% center;
+}
+.checked2 {
+    background-color: #ff464e !important;
+    color:#fff !important;
+}
+.header-search {
+    position: absolute;
+    z-index: 2333;
+    top:0;
+    left:0;
+    width:100%;
+    height: 100%;
+    background-color: #fff;
+    .header1 {
+        height: 88px;
+        background-color: #fff;
+        input {
+            width:90%;
+            height: 56px;
+            border:none;
+            outline: none;
+            background-size: 28px 28px ;/*px*/
+            background-color: transparent;
+        }
+        .search-box {
+            display: inline-block;
+            width:618px;
+            height: 56px;
+            margin-left: 29px;
+            margin-top: 16px;
+            border-radius: 28px;
+            background:#f4f4f4 url('../assets/images/search1@2x.png') no-repeat 19px center;
+            box-sizing: border-box;
+            padding-left: 56px;
+        }
+        button {
+            border:none;
+            outline:none;
+            background-color: transparent;
+            color: #949494;
+            font-family: PingFang SC Medium;
+            font-size: 28px;/*px*/
+            margin-left: 18px;
+        }
+        .delete {
+            display: inline-block;
+            width:24px;
+            height: 24px;
+            background: url('../assets/images/deletes.png') no-repeat center;
+            background-size: 24px 24px;/*px*/
+            vertical-align: middle;
+        }
     }
 }
 </style>

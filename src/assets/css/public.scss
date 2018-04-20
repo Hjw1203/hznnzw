@@ -1,0 +1,518 @@
+/* 重置默认样式 */
+ul,ol {
+  list-style: none;
+  margin:0;
+  padding:0;
+}
+input,p {
+margin:0;
+padding:0;
+}
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+
+/* mint-ui默认样式修改 */
+.mint-header {
+  position: fixed;
+  top:0;
+  width:100%;
+  height: 88px;
+  font-family: 'PingFang SC Medium';
+  font-size: 36px;/*px*/
+  color:#222;
+  border-bottom:1px solid #ddd;/*no*/
+  background-color: #fff;
+}
+.mint-header-title {
+  flex:2;
+  color:#222;
+}
+.mintui.mintui-back {
+  font-size: 36px;/*px*/
+}
+.mint-msgbox {
+    width:540px;
+    height: 288px;
+    border-radius: 26px;
+    padding-top: 22px;
+    box-sizing: border-box;
+}
+.mint-msgbox-content {
+      padding:0;
+}
+.mint-msgbox-title {
+  font-family: PingFang SC Bold;
+  font-weight: bold;
+  font-size: 36px;/*px*/
+  color: #000;
+}
+.mint-msgbox-message {
+    font-size: 26px;/*px*/
+    color: #000;
+    width: 316px;
+    height: 61px;
+    margin:20px auto  42px auto;
+}
+.mint-msgbox-btns {
+  height: 88px;
+  line-height: 88px;
+  font-size: 32px;/*px*/
+  color: #007aff;
+}
+.mint-msgbox-cancel,.mint-msgbox-confirm {
+  font-family: PingFang SC Bold;
+  color: #007aff;
+}
+.mint-toast {
+  height: 98px;
+  padding:0 15px !important;
+}
+.mint-toast-text {
+  font-family: PingFang SC Bold;
+  font-size: 32px;/*px*/
+  line-height: 98px;
+}
+// .mint-popup {
+//   width:100%;
+// }
+.mint-swipe-indicator {
+  width:12px;
+  height: 12px;
+  margin: 0 5px;
+  background:#fff;
+  opacity: 0.3;
+}
+.mint-navbar {
+  height: 80px;
+  .mint-tab-item {
+    padding:0;
+    .mint-tab-item-label {
+      line-height: 80px;
+      font-family: PingFang SC Medium;
+      font-size: 28px;/*px*/
+      color: #494949;
+    }
+  }
+  .mint-tab-item.is-selected {
+    .mint-tab-item-label {
+      color: #ff464e;
+    }
+  }
+}
+
+/* 公用的样式 */
+.pull-left {
+  float: left;
+}
+.pull-right {
+  float: right;
+}
+.clearfix:before,
+.clearfix:after {
+display: table;
+content: " ";
+clear: both;
+}
+.clearfix{
+*zoom: 1;
+}
+::-webkit-scrollbar {/*隐藏滚轮*/
+  display: none;
+}
+
+
+
+/* 商品一行两个排列 */
+.goods-main {
+  overflow: hidden;
+  li {
+    position: relative;
+    width:368px;
+    height: 586px;
+    float: left;
+    background-color: #fff;
+    margin-top:14px;
+    a {
+      text-decoration: none;
+    }
+
+  }
+  .goods-img {
+    display: block;
+    width:368px;
+    height: 368px;
+  }
+  .goods-message {
+    box-sizing: border-box;
+    padding:19px 14px 24px 18px;
+    span {
+      display: inline-block;
+    }
+  }
+  .find-similar {
+    position: absolute;
+    right:20px;
+    bottom:16px;
+    width:82px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border:1px solid #ebebeb;/*no*/
+    border-radius: 4px;
+    font-family: PingFang SC Medium;
+    font-size: 20px;/*px*/
+    a {
+      color: #999;
+    }
+  }
+  .keywords-box {
+    overflow: hidden;
+    font-family: PingFang SC Medium;
+    .keywords {
+      width:218px;
+      height: 32px;
+      float: left;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 1;
+      overflow: hidden;
+      font-size: 28px;/*px*/
+      color: #222;
+      margin-left: 9px;
+    }
+    .city,.state {
+      width:52px;
+      height: 28px;
+      line-height:28px;
+      text-align:center;
+      color:#fff;
+      float: left;
+      font-size: 20px;/*px*/
+      border-radius: 4px;
+      vertical-align: top;
+      margin-top: 2px;
+    }
+    .city {
+      background-color: #fd626a;
+    }
+    .state {
+      background-color: #0bc67d;
+      margin-left: 5px;
+    }
+  }
+  .describe {
+    width:281px;
+    height: 23px;
+    color: #999;
+    font-size: 24px;/*px*/
+    line-height: 23px;
+    margin-top: 15px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+  }
+  .goods-price {
+    margin-top: 26px;
+    .cost {
+    color: #ff464e;
+    font-size: 36px;/*px*/
+    i {
+      font-style: normal;
+      font-size: 24px;/*px*/
+    }
+  }
+  .send,.spread {
+    box-sizing: border-box;
+    border-radius: 4px;
+    height: 28px;
+    font-family: PingFang SC Medium;
+    font-size: 20px;/*px*/
+    vertical-align: top;
+    text-align: center;
+    line-height: 28px;
+    margin-top: 7px;
+  }
+  .send {
+    width:94px;
+    border:1px solid #10bf5a;/*no*/
+    color: #11c05a;
+    margin-left: 7px;
+  }
+  .spread {
+    width:54px;
+    color: #d7d7d7;
+    border:1px solid #d7d7d7;/*no*/
+    margin-left: 3px;
+  }
+  }
+  .goods-ico {
+    margin-top: 14px;
+    font-family: PingFang SC Medium;
+    span {
+      width:34px;
+      height: 32px;;
+      line-height:32px;
+      color: #fff;
+      text-align: center;
+      font-size: 20px;/*px*/
+      border-radius: 4px;
+      margin-right: 4px;
+    }
+    .ico1 {
+      background-color: #ff765b;
+    }
+    .ico2 {
+      background-color: #53cda3;
+    }
+    .ico3 {
+      background-color: #4ec6bf;
+    }
+    .ico4 {
+      background-color: #aa80d6;
+    }
+  }
+  li:nth-child(2n){
+    margin-left: 14px;
+  }
+}
+
+//商品横排 一排一个
+.goods-main-row {
+  padding-top: 8px;
+  margin-top: 381px;
+  li {
+    position: relative;
+    height: 260px;
+    background-color: #fff;
+    margin-bottom:8px;
+    a {
+      text-decoration: none;
+    }
+    .goods-img {
+      float: left;
+      width:260px;
+      height: 260px;
+    }
+    .goods-message {
+      float: left;
+      width:490px;
+      height: 260px;
+      box-sizing: border-box;
+      padding:19px 30px 15px 26px;
+      span {
+        display: inline-block;
+      }
+    }
+    .find-similar {
+      position: absolute;
+      right:20px;
+      bottom:16px;
+      width:82px;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      border:1px solid #ebebeb;
+      border-radius: 4px;
+      font-family: PingFang SC Medium;
+      font-size: 20px;/*px*/
+      a {
+        color: #999;
+      }
+    }
+.keywords-box {
+  overflow: hidden;
+  font-family: PingFang SC Medium;
+  .keywords {
+    width:318px;
+    height: 32px;
+    float: left;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    font-size: 28px;/*px*/
+    color: #222;
+    margin-left: 9px;
+  }
+  .city,.state {
+    float: left;
+    width:52px;
+    height: 28px;
+    line-height:28px;
+    text-align:center;
+    color:#fff;
+    font-size: 20px;/*px*/
+    border-radius: 4px;
+    vertical-align: top;
+    margin-top: 3px;
+  }
+  .city {
+    background-color: #fd626a;
+  }
+  .state {
+    background-color: #0bc67d;
+    margin-left: 2px;
+    }
+   }
+.describe {
+  width:434px;
+  height: 64px;
+  color: #999;
+  font-size: 24px;/*px*/
+  line-height: 32px;
+  margin-top: 13px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.goods-price {
+  margin-top: 25px;
+  .cost {
+  color: #ff464e;
+  font-size: 36px;/*px*/
+  i {
+    font-style: normal;
+    font-size: 24px;/*px*/
+  }
+}
+.send,.spread {
+  box-sizing: border-box;
+  border-radius: 4px;
+  height: 28px;
+  font-family: PingFang SC Medium;
+  font-size: 20px;/*px*/
+  vertical-align: top;
+  text-align: center;
+  line-height: 28px;
+  margin-top: 7px;
+}
+.send {
+  width:94px;
+  border:1px solid #10bf5a;
+  color: #11c05a;
+  margin-left: 7px;
+}
+.spread {
+  width:54px;
+  color: #d7d7d7;
+  border:1px solid #d7d7d7;
+  margin-left: 3px;
+}
+}
+.goods-ico {
+  margin-top: 17px;
+  font-family: PingFang SC Medium;
+  span {
+    width:34px;
+    height: 32px;;
+    line-height:32px;
+    color: #fff;
+    text-align: center;
+    font-size: 20px;/*px*/
+    border-radius: 4px;
+    margin-right: 4px;
+  }
+  .ico1 {
+    background-color: #ff765b;
+  }
+  .ico2 {
+    background-color: #53cda3;
+  }
+  .ico3 {
+    background-color: #4ec6bf;
+  }
+  .ico4 {
+    background-color: #aa80d6;
+  }
+}
+
+  }
+}
+/* 单选框样式 */
+
+
+
+/* 开关样式 */
+.mui-switch {
+  width: 102px;
+  height: 62px;
+  position: relative;
+  border: 1px solid #dfdfdf !important;/*no*/
+  background-color: #fdfdfd;
+  box-shadow: #dfdfdf 0 0 0 0 inset;
+  border-radius: 40px;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  background-clip: content-box;
+  display: inline-block;
+  -webkit-appearance: none;
+  user-select: none;
+  outline: none; }
+  .mui-switch:before {
+    content: '';
+    width: 57px;
+    height: 57px;
+    position: absolute;
+    top: 0px;
+    left: 0;
+    border-radius: 40px;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4); } /*no*/
+  .mui-switch:checked {
+    border-color: #4CD964;
+    box-shadow: #4CD964 0 0 0 16px inset;/*no*/
+    background-color: #4CD964; }
+    .mui-switch:checked:before {
+      left: 42px; }
+  .mui-switch.mui-switch-animbg {
+    transition: background-color ease 0.4s; }
+    .mui-switch.mui-switch-animbg:before {
+      transition: left 0.3s; }
+    .mui-switch.mui-switch-animbg:checked {
+      box-shadow: #dfdfdf 0 0 0 0 inset;
+      background-color: #4CD964;
+      transition: border-color 0.4s, background-color ease 0.4s; }
+      .mui-switch.mui-switch-animbg:checked:before {
+        transition: left 0.3s; }
+  .mui-switch.mui-switch-anim {
+    transition: border cubic-bezier(0, 0, 0, 1) 0.4s, box-shadow cubic-bezier(0, 0, 0, 1) 0.4s; }
+    .mui-switch.mui-switch-anim:before {
+      transition: left 0.3s; }
+    .mui-switch.mui-switch-anim:checked {
+      box-shadow: #4CD964 0 0 0 16px inset;
+      background-color: #4CD964;
+      transition: border ease 0.4s, box-shadow ease 0.4s, background-color ease 1.2s; }
+      .mui-switch.mui-switch-anim:checked:before {
+        transition: left 0.3s; }
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

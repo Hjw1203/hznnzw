@@ -29,7 +29,9 @@ import uploading from '@/components/uploading'
 import collectGoods from '@/components/collectGoods'
 import browsingHistory from '@/components/browsingHistory'
 import couponBox from '@/components/couponBox'
-import myOrder from '@/components/myOrder'
+import logistics from '@/components/logistics'
+import transactionDetails from '@/components/transactionDetails'
+import payment from '@/components/payment'
 import userAgreement from '@/components/userAgreement'
 import searchResult from '@/components/searchResult'
 import searchResults from '@/components/searchResults'
@@ -60,16 +62,16 @@ export default new Router({
     //   name: 'index', //首页
     //   component: index
     // },
-      // {
-      //   path:'/',
-      //   name:'selectSource', //选择货源地
-      //   component:selectSource
-      // } 
-      // {
-      //   path:'/',
-      //   name:'brandNavigation', //品牌导航
-      //   component:brandNavigation
-      // },
+      {
+      path:'/selectSource',
+      name:'selectSource', //选择货源地
+      component:selectSource
+    },
+    // {
+    //     path:'/',
+    //     name:'brandNavigation', //品牌导航
+    //     component:brandNavigation
+    //   },
       // {
       //   path:'/',
       //   name:'application', //填写入驻申请表
@@ -88,7 +90,7 @@ export default new Router({
       {
         path:'/selectSourceSearch',
         name:'selectSourceSearch', //选择货源地带搜索
-        component:selectSourceSearch, 
+        component:selectSourceSearch,
       },
       {
         path:'/selectMarket',
@@ -109,6 +111,11 @@ export default new Router({
         path:'/newsDetail',
         name:'newsDetail',  //资讯详情
         component:newsDetail,
+      },
+      {
+        path:'/payment',
+        name:'payment',
+        component:payment,
       },
       // {
       //   path:'/',
@@ -140,16 +147,16 @@ export default new Router({
       //   name:'lightningSend', //闪电发货
       //   component:lightningSend,
       // },
-      // {
-      //   path:'/',
-      //   name:'productDetail', //商品详情
-      //   component:productDetail,
-      // },
+      {
+        path:'/',
+        name:'productDetail', //商品详情
+        component:productDetail,
+      },
       // {
       //   path:'/',
       //   name:'editProduct', // 编辑商品
       //   component:editProduct
-      // }, 
+      // },
       {
         path:'/texture',
         name:'texture', //材质
@@ -190,15 +197,25 @@ export default new Router({
       //   name:'couponBox',   //我的优惠券
       //   component:couponBox,
       // },
-      {
-        path:'/',
-        name:'myOrder',   //我的订单
-        component:myOrder,
-      }
+      // {
+      //   path:'/',
+      //   name:'myOrder',   //我的订单
+      //   component:myOrder,
+      // },
+      // {
+      //   path:'/',
+      //   name:'logistics', //查看物流
+      //   component:logistics,
+      // },
+      //     {
+      //       path:'/',
+      //       name:'transactionDetails',  //交易明细
+      //       component:transactionDetails,
+      //     }
       // {
       //   path:'/',
       //   name:'uploading',//上传中
-      //   component:uploading, 
+      //   component:uploading,
       // }
       // {
       //   path:'/',
@@ -347,6 +364,6 @@ export default new Router({
       //   path:'/productService',
       //   name:'productService',
       //   component:productService //(x)
-      // }    
+      // }
   ]
 })

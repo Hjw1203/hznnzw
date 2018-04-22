@@ -1,36 +1,36 @@
 <template>
   <div>
       <div class="banner">
-            <ul class="clearfix">
-                <li>
-                    <video poster="http://img.hznzcn.com/images/goods_new/20160813/b1265806dc5b4162813d039f423c0e85.jpg">
-                        <source src="http://video.hznzcn.com/video/20180403/-715974517.mov" type="video/mp4">                          
-                    </video>
-                    <span class="play" @click="play"></span>
-                </li>
-                <li>
-                    <img src="http://img.hznzcn.com/images/goods_new/20160813/b1265806dc5b4162813d039f423c0e85.jpg" alt="">
-                </li>
-                <li>
-                    <img src="http://img.hznzcn.com/images/goods_new/20160813/598aeda4014c40769c0300d5519b7d09.jpg" alt="">
-                </li>
-                <li>
-                    <img src="http://img.hznzcn.com/images/goods_new/20160813/a20bdcedcb814b9986c18754b37a3dd5.jpg" alt="">
-                </li>
-                <li>
-                    <img src="http://img.hznzcn.com/images/goods_new/20160813/1fdec2e6b59045dbabd2b3667ed3ff0c.jpg" alt="">
-                </li>
-                <li>
-                    <img src="http://img.hznzcn.com/images/goods_new/20160813/fe4fe566b4e5438da1ee4e43e3c44ba8.jpg" alt="">
-                </li>
-            </ul>
+            <mt-swipe :auto="0" :showIndicators="false" :continuous="false" @change="handleChange">
+              <mt-swipe-item>
+                <video poster="http://img.hznzcn.com/images/goods_new/20160813/b1265806dc5b4162813d039f423c0e85.jpg">
+                  <source src="http://video.hznzcn.com/video/20180403/-715974517.mov" type="video/mp4">
+                </video>
+                <span class="play" @click="play"></span>
+              </mt-swipe-item>
+              <mt-swipe-item>
+                <img src="http://img.hznzcn.com/images/goods_new/20160813/b1265806dc5b4162813d039f423c0e85.jpg" alt="">
+              </mt-swipe-item>
+              <mt-swipe-item>
+                <img src="http://img.hznzcn.com/images/goods_new/20160813/598aeda4014c40769c0300d5519b7d09.jpg" alt="">
+              </mt-swipe-item>
+              <mt-swipe-item>
+                <img src="http://img.hznzcn.com/images/goods_new/20160813/a20bdcedcb814b9986c18754b37a3dd5.jpg" alt="">
+              </mt-swipe-item>
+              <mt-swipe-item>
+                <img src="http://img.hznzcn.com/images/goods_new/20160813/1fdec2e6b59045dbabd2b3667ed3ff0c.jpg" alt="">
+              </mt-swipe-item>
+              <mt-swipe-item>
+                <img src="http://img.hznzcn.com/images/goods_new/20160813/fe4fe566b4e5438da1ee4e43e3c44ba8.jpg" alt="">
+              </mt-swipe-item>
+            </mt-swipe>
             <div class="info">
                 <div class="center">
-                    <span class="video">视频</span>
-                    <span class="img">图片</span>
+                    <span class="video on" ref="video">视频</span>
+                    <span class="img" ref="img">图片</span>
                 </div>
-                <div class="page">
-                    1/5
+                <div class="page" ref="page">
+                    {{page}}/{{totalPage}}
                 </div>
             </div>
       </div>
@@ -69,7 +69,7 @@
                 <span>上传</span>
                 <span>7441</span>
             </div>
-        </div>          
+        </div>
       </div>
       <div class="yhq-box">
           <span class='yhq-title'>优惠券</span>
@@ -106,7 +106,7 @@
                     <div class="collect">
                     <span class="collect-box"  @click="collect">取消</span>
                     </div>
-                </div>                
+                </div>
             </div>
             <div class="all-data">
                 <div class="data1">
@@ -275,7 +275,7 @@
                             <span class="ico3">厂</span>
                             <span class="ico4">图</span>
                         </div>
-                        </div>        
+                        </div>
                     </a>
                     <div class="find-similar"><a href="">找相似</a></div>
                     </li>
@@ -300,7 +300,7 @@
                             <span class="ico3">厂</span>
                             <span class="ico4">图</span>
                         </div>
-                        </div>        
+                        </div>
                     </a>
                     <div class="find-similar"><a href="">找相似</a></div>
                     </li>
@@ -325,11 +325,11 @@
                             <span class="ico3">厂</span>
                             <span class="ico4">图</span>
                         </div>
-                        </div>        
+                        </div>
                     </a>
                     <div class="find-similar"><a href="">找相似</a></div>
                     </li>
-                </ul>  
+                </ul>
             </div>
         </div>
     <mt-popup v-model="colorSize" position='bottom'>
@@ -375,12 +375,12 @@
                 <span v-text='num'></span>
                 <button @click="add">+</button>
             </div>
-          </div>          
+          </div>
         </div>
         <div class="close" @click="colorSizeCheck"></div>
         <div class="btns">
           <button>确定</button>
-        </div>    
+        </div>
       </div>
     </mt-popup>
     <mt-popup v-model="parameters" position='bottom'>
@@ -408,7 +408,7 @@
               <li>
                   <span>面料材质</span>
                   <span>羊毛</span>
-              </li>   
+              </li>
               <li>
                   <span>领子</span>
                   <span>西装领</span>
@@ -436,12 +436,12 @@
               <li>
                   <span>颜色分类</span>
                   <span>黑色</span>
-              </li>     
+              </li>
           </ul>
           <div class="close" @click="parametersInfo"></div>
         <div class="btns">
           <button>确定</button>
-        </div>    
+        </div>
       </div>
     </mt-popup>
     <mt-popup v-model="upload" position='bottom' class="upload-popup">
@@ -486,7 +486,9 @@ export default {
           goodsColor:'白色',
           goodsQuantity:'M',
           upload:false,
-          num:1
+          num:1,
+          page:0, //商品展示图索引
+          totalPage:5, //商品展示图总数
       }
   },
   methods:{
@@ -498,7 +500,19 @@ export default {
       colorSizeCheck:function(e) {
           this.colorSize = !this.colorSize;
       },
-
+      handleChange(index) {
+       if(index>=1 && index <= this.totalPage) {
+            this.page = index;
+            this.$refs.video.classList.remove('on');
+            this.$refs.img.classList.add('on');
+            this.$refs.page.style.display = 'block';
+       } else if(index < 1) {
+            this.$refs.page.style.display = 'none';
+            this.page= 0;
+           this.$refs.video.classList.add('on');
+           this.$refs.img.classList.remove('on');
+       }
+    },
     collect:function(e){
        console.log(e.target)
        e.target.classList.toggle('collect-img');
@@ -516,19 +530,19 @@ export default {
                 if(lis[i] != e.target) {
                     lis[i].classList.remove('default');
                 }
-            } 
+            }
             e.target.classList.add("default");
             if(e.target.dataset.color) {
                 this.goodsColor = e.target.dataset.color;
             } else if (e.target.dataset.quantity) {
                 this.goodsQuantity = e.target.dataset.quantity;
             }
-        } 
+        }
     },
     add(e){ //礼品数量+
       e.target.parentNode.children[0].disabled = false;
       this.num+=1;
-      this.tarePrice = this.price*this.num;  
+      this.tarePrice = this.price*this.num;
   },
     reduce(e){ //礼品数量-
     if(parseInt(e.target.parentNode.children[1].innerHTML)<=1) {
@@ -536,7 +550,7 @@ export default {
             return;
         }
         this.num-=1;
-        this.tarePrice = this.price*this.num;  
+        this.tarePrice = this.price*this.num;
     },
     sure() { //礼品确定
         this.giftInfo = !this.giftInfo;
@@ -573,87 +587,69 @@ export default {
     uploadQ() {
         alert('传朋友圈...')
     }
+  },
+  mounted() {
+    let len = document.querySelectorAll('.banner img').length;
+    this.totalPge = len;
   }
 }
 </script>
 
 <style lang="scss" scoped>
     .banner {
-        position: relative;
-        overflow-x: scroll;
-        white-space:nowrap;
-        ul {
-            font-size: 0;    
-            li {
-            height: 750px;
+      position: relative;
+      height: 750px;
+      img {
+        width: 100%;
+        height: 750px;
+      }
+      .info {
+        position: absolute;
+        bottom: 31px;
+        width: 100%;
+        div {
+          display: inline-block;
+          span {
             display: inline-block;
-            img {
-                width:750px;
-                height: 750px;
-            }
-            &:first-child {
-                position: relative;
-                .play {
-                    display: inline-block;
-                    position: absolute;
-                    top:50%;
-                    left:50%;
-                    width:114px;
-                    height: 114px;
-                    margin-top: -77px;
-                    margin-left: -77px;
-                    z-index: 232;
-                    background: url('../assets/images/play@2x.png') no-repeat center;
-                                        display: none;
-                }
-            }
-            }
+            width: 89px;
+            height: 42px;
+            line-height: 42px;
+            border-radius: 21px;
+            font-family: PingFang SC Medium;
+            font-size: 22px; /*px*/
+          }
+          .video {
+            background:url('../assets/images/play2@2x.png') no-repeat 9px center;
+            padding-left: 35px;
+            box-sizing: border-box;
+            margin-left: 294px;
+          }
+          .img {
+            background-color: #fff;
+            color: #000;
+            text-align: center;
+            margin-left: 6px;
+          }
+          .on {
+            background-color: #ff464e;
+            color: #fff;
+          }
         }
-        .info {
-            position: absolute;
-            bottom:31px;
-            width:100%;
-            div {
-                display:inline-block;
-                span {
-                    display: inline-block;
-                    width:89px;
-                    height: 42px;
-                    line-height: 42px;
-                    border-radius: 21px;
-                    font-family: PingFang SC Medium;
-                    font-size: 22px;/*px*/
-                }
-                .video {
-
-                    background: #ff464e url('../assets/images/play2@2x.png') no-repeat 9px center;
-                    padding-left: 35px;
-                    box-sizing: border-box;
-                    color: #fff;
-                    margin-left: 294px;
-                }
-                .img {
-                    background-color: #fff;
-                    color: #000;
-                    text-align: center;
-                    margin-left: 6px;
-                }
-            }
-            .page {
-                width:75px;
-                height: 42px;
-                line-height: 42px;
-                border-radius: 21px;
-                font-family: PingFang SC Medium;
-                font-size: 22px;/*px*/
-                background-color: rgba(0,0,0,.4);
-                color: #fff; 
-                text-align: center; 
-                float: right;
-                margin-right: 25px;
-            }
+        .page {
+          width: 75px;
+          height: 42px;
+          line-height: 42px;
+          border-radius: 21px;
+          font-family: PingFang SC Medium;
+          font-size: 22px; /*px*/
+          background-color: rgba(0, 0, 0, .4);
+          color: #fff;
+          text-align: center;
+          float: right;
+          margin-right: 25px;
+          display: none;
         }
-        
+      }
     }
     .product-data {
         padding-top: 25px;
@@ -665,20 +661,20 @@ export default {
         padding-bottom: 22px;
         .shop-name-title {
             font-family: PingFang SC Medium;
-            font-size: 32px;/*px*/ 
-            color: #222;          
+            font-size: 32px;/*px*/
+            color: #222;
         }
         .keywords {
             font-family: PingFang SC Medium;
-            font-size: 28px;/*px*/ 
-            color: #666;  
+            font-size: 28px;/*px*/
+            color: #666;
             margin-top: 15px;
             margin-bottom: 20px;
             overflow: hidden;
             text-overflow:ellipsis;
-            display:-webkit-box; 
+            display:-webkit-box;
             -webkit-box-orient:vertical;
-            -webkit-line-clamp:1;       
+            -webkit-line-clamp:1;
         }
         .price {
             color: #ff464e;
@@ -699,7 +695,7 @@ export default {
             border-radius: 6px;
             color: #ff6600;
             font-size: 24px;/*px*/
-                    
+
         }
     }
     .data {
@@ -715,7 +711,7 @@ export default {
                     span:last-child {
                     color: #282828;
                     font-size: 24px;/*px*/
-                    margin: 0 8px 0 8px;                     
+                    margin: 0 8px 0 8px;
                     }
         }
         .data1 {
@@ -737,7 +733,7 @@ export default {
         .yhq-title {
             color: #949494;
             font-family: PingFang SC Medium;
-            font-size: 28px;/*px*/ 
+            font-size: 28px;/*px*/
             line-height: 80px;
         }
         .yhq {
@@ -770,7 +766,7 @@ export default {
         span {
             display: inline-block;
             width:95px;
-            height:32px; 
+            height:32px;
             line-height: 32px;
             text-align: center;
             border-radius: 4px;
@@ -783,13 +779,13 @@ export default {
             background:rgba(255,118,91,1);
         }
         .label2 {
-            background:rgba(83,205,163,1);           
+            background:rgba(83,205,163,1);
         }
         .label3 {
-            background:rgba(78,198,191,1);            
+            background:rgba(78,198,191,1);
         }
         .label4{
-            background:rgba(170,128,214,1);            
+            background:rgba(170,128,214,1);
         }
     }
     video {
@@ -838,7 +834,7 @@ export default {
     font-size: 20px;/*px*/
     vertical-align: top;
     margin-top: 5px;
-    margin-left: 5px;    
+    margin-left: 5px;
 }
 .store-area {
     width:52px;
@@ -849,8 +845,8 @@ export default {
     color: #fff;
     border-radius: 4px;
     font-family: 'PingFang SC Medium';
-    font-size: 20px;/*px*/ 
-    vertical-align: top;    
+    font-size: 20px;/*px*/
+    vertical-align: top;
     margin-top: 5px;
     margin-left: 5px;
 }
@@ -877,7 +873,7 @@ export default {
        color: #999;
        font-family: 'PingFang SC Medium';
        font-size: 22px;/*px*/
-       margin-top: 16px; 
+       margin-top: 16px;
     }
 }
 .collect {
@@ -909,7 +905,7 @@ export default {
            color: #b3b3b3;
            font-size: 24px;/*px*/
            margin-top: 19px;
-       } 
+       }
     }
     .data1,.data2,.data3 {
         border-right:1px solid #ebebeb;/*no*/
@@ -917,10 +913,10 @@ export default {
     .data1 p:first-child,.data2 p:first-child {
            font-family: PingFang SC Medium;
            color: #292929;
-           font-size: 28px;/*px*/        
+           font-size: 28px;/*px*/
     }
     .data1 {
-        width:160px;     
+        width:160px;
     }
     .data2 {
         width:235px;
@@ -948,7 +944,7 @@ export default {
     a {
         font-family: PingFang SC Medium;
         font-size: 30px;/*px*/
-        columns: #282828;
+        corlor: #282828;
         display:block;
         background: url('../assets/images/store@2x.png') no-repeat 39% center;
         background-size: 28px 26px;
@@ -988,7 +984,7 @@ export default {
     div span:last-child {
         color: #898989;
         font-family: PingFang SC Medium;
-        font-size: 26px;/*px*/         
+        font-size: 26px;/*px*/
     }
     .div1 {
         height: 76px;
@@ -997,7 +993,7 @@ export default {
         span:first-child {
             color: #282828;
             font-family: PingFang SC Medium;
-            font-size: 28px;/*px*/ 
+            font-size: 28px;/*px*/
         }
     }
     .div2,.div3 {
@@ -1013,7 +1009,7 @@ export default {
     line-height: 61px;
     text-align: center;
     font-family: PingFang SC Medium;
-    font-size: 24px;/*px*/ 
+    font-size: 24px;/*px*/
     color: #898989;
 }
 .upload {
@@ -1025,7 +1021,7 @@ export default {
     line-height: 77px;
     border-bottom:1px solid #ddd;
     font-family: PingFang SC Medium;
-    font-size: 26px;/*px*/ 
+    font-size: 26px;/*px*/
     color: #727272;
     padding-left: 40px;
     &:last-child {
@@ -1088,7 +1084,7 @@ export default {
     .action {
         width:322px;
         background-color: #fff;
-        vertical-align: top; 
+        vertical-align: top;
         font-size: 0;
         text-align: center;
         div:first-child {
@@ -1122,7 +1118,7 @@ export default {
         color: #fff;
         margin:0 35px 0 15px;
         font-family: PingFang SC Medium;
-        font-size: 28px;/*px*/ 
+        font-size: 28px;/*px*/
     }
 }
 .goods-info1 {
@@ -1287,7 +1283,7 @@ export default {
         padding-left: 20px;
         padding-bottom: 10px;
         li {
-           font-size: 30px;/*px*/ 
+           font-size: 30px;/*px*/
            color: #898989;
            span:first-child {
                display: inline-block;
@@ -1304,7 +1300,7 @@ export default {
         font-family: PingFang SC Medium;
         font-size: 28px;/*px*/
         color: #282828;
-        margin:0         
+        margin:0
     }
     .parameters-title2 {
         margin-top: 20px;
@@ -1354,7 +1350,7 @@ export default {
             &:nth-child(5) {
                  background: url('../assets/images/c5@2x.png') no-repeat center 0;
                  margin-top: 44px;
-            }             
+            }
         }
 
     }
@@ -1370,7 +1366,7 @@ export default {
     background:transparent url('../assets/images/close.png') no-repeat center;
 }
 .clred {
-    color: #ff464e !important;   
+    color: #ff464e !important;
 }
 .clgreen {
     color: #2ea067 !important;

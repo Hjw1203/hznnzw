@@ -27,6 +27,7 @@ import style from '@/components/style'
 import combine from '@/components/combine'
 import uploading from '@/components/uploading'
 import collectGoods from '@/components/collectGoods'
+import myOrder from '@/components/myOrder'
 import browsingHistory from '@/components/browsingHistory'
 import couponBox from '@/components/couponBox'
 import logistics from '@/components/logistics'
@@ -147,11 +148,11 @@ export default new Router({
       //   name:'lightningSend', //闪电发货
       //   component:lightningSend,
       // },
-      {
-        path:'/',
-        name:'productDetail', //商品详情
-        component:productDetail,
-      },
+      // {
+      //   path:'/',
+      //   name:'productDetail', //商品详情
+      //   component:productDetail,
+      // },
       // {
       //   path:'/',
       //   name:'editProduct', // 编辑商品
@@ -197,11 +198,11 @@ export default new Router({
       //   name:'couponBox',   //我的优惠券
       //   component:couponBox,
       // },
-      // {
-      //   path:'/',
-      //   name:'myOrder',   //我的订单
-      //   component:myOrder,
-      // },
+      {
+        path:'/',
+        name:'myOrder',   //我的订单
+        component:myOrder,
+      },
       // {
       //   path:'/',
       //   name:'logistics', //查看物流

@@ -22,25 +22,25 @@
       <div class="navigation"> <!-- 分类导航 -->
         <ul class='clearfix'>
             <li>
-                <a href="">品牌导航</a>
+                <router-link to='brandNavigation'>品牌导航</router-link>
             </li>
             <li>
-                <a href="">商品分类</a>
+                <router-link to='category'>商品分类</router-link>
             </li>
             <li>
-                <a href="">热卖排行</a>
+                <router-link to=''>热卖排行</router-link>
             </li>
             <li>
-                <a href="">每日新款</a>
+                <router-link to='newGoods'>每日新款</router-link>
             </li>
             <li>
-                <a href="">闪电发货</a>
+                <router-link to='lightningSend'>闪电发货</router-link>
             </li>
             <li>
-                <a href="">商家入驻</a>
+                <router-link to='application'>商家入驻</router-link>
             </li>
             <li>
-                <a href="">帮助中心</a>
+                <router-link to=''>帮助中心</router-link>
             </li>
         </ul>
         <div class="headline">
@@ -48,22 +48,22 @@
             <div  class="pull-left">
                 <ul style="left:0;" ref="headline">
                     <li>
-                        <a href="">
+                        <router-link to='newHeadlines'>
                             <span class="range">公告</span>
                             <p>2018年春节各类信息汇总-1月27日更新</p>
-                        </a>
+                        </router-link>
                     </li>
                     <li>
-                        <a href="">
+                        <router-link to='newHeadlines'>
                             <span class="range">热评</span>
                             <p>2018年春节各类信息汇总-1月27日更新</p>
-                        </a>
+                        </router-link>
                     </li>
                     <li>
-                        <a href="">
+                        <router-link to='newHeadlines'>
                             <span class="range">热议</span>
                             <p>2018年春节各类信息汇总-1月27日更新</p>
-                        </a>
+                        </router-link>
                     </li>
                 </ul>
             </div>
@@ -96,23 +96,23 @@
                     </div>
                     <div class="goods clearfix">
                         <div class="pull-left">
-                            <a href="">
+                            <router-link to='productDetail'>
                                 <img src="http://img.hznzcn.com/images/goods_new/20180327/20180327162414496.jpg" alt="">
                                 <span>￥90.00</span>
-                            </a>
+                            </router-link>
                         </div>
                         <div class="pull-right">
                             <div>
-                                <a href="">
+                                <router-link to='productDetail'>
                                     <img src="http://img.hznzcn.com/images/goods_new/20180401/20180401162244930.jpg" alt="">
                                     <span>￥90.00</span>
-                                </a>
+                                </router-link>
                             </div>
                             <div>
-                                <a href="">
+                                <router-link to='productDetail'>
                                     <img src="http://img.hznzcn.com/images/goods_new/20180327/20180327162404974.jpg" alt="">
                                     <span>￥90.00</span>
-                                </a>
+                                </router-link>
                             </div>
                         </div>
                     </div>
@@ -153,23 +153,23 @@
                     </div>
                     <div class="goods clearfix">
                         <div class="pull-left">
-                            <a href="">
+                            <router-link to='productDetail'>
                                 <img src="http://img.hznzcn.com/images/goods_new/20160809/20160809152404637.jpg" alt="">
                                 <span>￥90.00</span>
-                            </a>
+                            </router-link>
                         </div>
                         <div class="pull-right">
                             <div>
-                                <a href="">
+                                <router-link to=''>
                                     <img src="http://img.hznzcn.com/images/goods_new/20180124/20180124161242436.jpg" alt="">
                                     <span>￥90.00</span>
-                                </a>
+                                </router-link>
                             </div>
                             <div>
-                                <a href="">
+                                <router-link to=''>
                                     <img src="http://img.hznzcn.com/images/goods_new/20160809/20160809152401282.jpg" alt="">
                                     <span>￥90.00</span>
-                                </a>
+                                </router-link>
                             </div>
                         </div>
                     </div>
@@ -199,7 +199,7 @@
           <div class="send-box">
               <ul>
                   <li>
-                      <a href="">
+                      <router-link to='productDetail'>
                           <div>
                               <img src="http://img.hznzcn.com/images/goods_new/20170521/20170521204340022.jpg" alt="">
                           </div>
@@ -212,10 +212,10 @@
                               <span><i>￥</i>115.00</span>
                               <span>闪电发货</span>
                           </div>
-                      </a>
+                      </router-link>
                   </li>
                   <li>
-                      <a href="">
+                      <router-link to=''>
                           <div>
                               <img src="http://img.hznzcn.com/images/goods_new/20150726/2015726_1249312458.jpg" alt="">
                           </div>
@@ -228,10 +228,10 @@
                               <span><i>￥</i>115.00</span>
                               <span>闪电发货</span>
                           </div>
-                      </a>
+                      </router-link>
                   </li>
                   <li>
-                      <a href="">
+                      <router-link to=''>
                           <div>
                               <img src="http://img.hznzcn.com/images/goods_new/20180329/20180329171124287.jpg" alt="">
                           </div>
@@ -244,7 +244,7 @@
                               <span><i>￥</i>115.00</span>
                               <span>闪电发货</span>
                           </div>
-                      </a>
+                      </router-link>
                   </li>
               </ul>
           </div>
@@ -255,7 +255,7 @@
           </div>
           <ul class="market-box">
               <li>
-                  <a href="">
+                  <router-link to='brandNavigation'>
                       <div class="market-name">
                           <span>杭州</span>
                           <span>意法服饰城</span>
@@ -263,10 +263,10 @@
                       <div class="add-new-goods">本周上新 3954款</div>
                       <div class="hot-num">热销指数 393354</div>
                       <div class="store-num">入驻商家5922家</div>
-                  </a>
+                  </router-link>
               </li>
               <li>
-                  <a href="">
+                  <router-link to='brandNavigation'>
                       <div class="market-name">
                           <span>杭州</span>
                           <span>好四季鞋包服饰城</span>
@@ -274,10 +274,10 @@
                       <div class="add-new-goods">本周上新 3954款</div>
                       <div class="hot-num">热销指数 393354</div>
                       <div class="store-num">入驻商家5922家</div>
-                  </a>
+                  </router-link>
               </li>
               <li>
-                  <a href="">
+                  <router-link to='brandNavigation'>
                       <div class="market-name">
                           <span>杭州</span>
                           <span>中纺中心</span>
@@ -285,10 +285,10 @@
                       <div class="add-new-goods">本周上新 3954款</div>
                       <div class="hot-num">热销指数 393354</div>
                       <div class="store-num">入驻商家5922家</div>
-                  </a>
+                  </router-link>
               </li>
               <li>
-                  <a href="">
+                  <router-link to='brandNavigation'>
                       <div class="market-name">
                           <span>濮院</span>
                           <span>濮院毛衫市场</span>
@@ -296,7 +296,7 @@
                       <div class="add-new-goods">本周上新 3954款</div>
                       <div class="hot-num">热销指数 393354</div>
                       <div class="store-num">入驻商家5922家</div>
-                  </a>
+                  </router-link>
               </li>
           </ul>
       </div>
@@ -321,7 +321,7 @@
       <div class="goods-main">
         <ul>
             <li>
-            <a href="">
+            <router-link to='productDetail'>
                 <img src="http://img.hznzcn.com/images/goods_new/20180201/20180201173228071.jpg" class="goods-img" alt="">
                 <div class="goods-message">
                 <div class="keywords-box">
@@ -342,11 +342,11 @@
                     <span class="ico4">图</span>
                 </div>
                 </div>        
-            </a>
+            </router-link>
             <div class="find-similar"><a href="">找相似</a></div>
             </li>
             <li>
-            <a href="">
+            <router-link to='productDetail'>
                 <img src="http://img.hznzcn.com/images/goods_new/20180201/20180201173228071.jpg" class="goods-img" alt="">
                 <div class="goods-message">
                 <div class="keywords-box">
@@ -367,11 +367,11 @@
                     <span class="ico4">图</span>
                 </div>
                 </div>        
-            </a>
+            </router-link>
             <div class="find-similar"><a href="">找相似</a></div>
             </li>
             <li>
-            <a href="">
+            <router-link to='productDetail'>
                 <img src="http://img.hznzcn.com/images/goods_new/20180201/20180201173228071.jpg" class="goods-img" alt="">
                 <div class="goods-message">
                 <div class="keywords-box">
@@ -392,11 +392,11 @@
                     <span class="ico4">图</span>
                 </div>
                 </div>        
-            </a>
+            </router-link>
             <div class="find-similar"><a href="">找相似</a></div>
             </li>
             <li>
-            <a href="">
+            <router-link to='productDetail'>
                 <img src="http://img.hznzcn.com/images/goods_new/20180201/20180201173228071.jpg" class="goods-img" alt="">
                 <div class="goods-message">
                 <div class="keywords-box">
@@ -417,11 +417,11 @@
                     <span class="ico4">图</span>
                 </div>
                 </div>        
-            </a>
+            </router-link>
             <div class="find-similar"><a href="">找相似</a></div>
             </li>
             <li>
-            <a href="">
+            <router-link to='productDetail'>
                 <img src="http://img.hznzcn.com/images/goods_new/20180201/20180201173228071.jpg" class="goods-img" alt="">
                 <div class="goods-message">
                 <div class="keywords-box">
@@ -442,11 +442,11 @@
                     <span class="ico4">图</span>
                 </div>
                 </div>        
-            </a>
+            </router-link>
             <div class="find-similar"><a href="">找相似</a></div>
             </li>
             <li>
-            <a href="">
+            <router-link to='productDetail'>
                 <img src="http://img.hznzcn.com/images/goods_new/20180201/20180201173228071.jpg" class="goods-img" alt="">
                 <div class="goods-message">
                 <div class="keywords-box">
@@ -467,11 +467,11 @@
                     <span class="ico4">图</span>
                 </div>
                 </div>        
-            </a>
+            </router-link>
             <div class="find-similar"><a href="">找相似</a></div>
             </li>
             <li>
-            <a href="">
+            <router-link to='productDetail'>
                 <img src="http://img.hznzcn.com/images/goods_new/20180201/20180201173228071.jpg" class="goods-img" alt="">
                 <div class="goods-message">
                 <div class="keywords-box">
@@ -492,57 +492,7 @@
                     <span class="ico4">图</span>
                 </div>
                 </div>        
-            </a>
-            <div class="find-similar"><a href="">找相似</a></div>
-            </li>
-            <li>
-            <a href="">
-                <img src="http://img.hznzcn.com/images/goods_new/20180201/20180201173228071.jpg" class="goods-img" alt="">
-                <div class="goods-message">
-                <div class="keywords-box">
-                    <span class="city">杭州</span>
-                    <span class="state">预售</span>
-                    <span class="keywords">关键词 GJC7711</span>
-                </div>
-                <div class="describe">2018年春季长袖长款修身POLO领时尚韩版气质优雅简约潮流风衣</div>
-                <div class="goods-price">
-                    <span class="cost"><i>￥</i>115.00</span>
-                    <span class="send">闪电发货</span>
-                    <span class="spread">推广</span>
-                </div>
-                <div class="goods-ico">
-                    <span class="ico1">实</span>
-                    <span class="ico2">退</span>
-                    <span class="ico3">厂</span>
-                    <span class="ico4">图</span>
-                </div>
-                </div>        
-            </a>
-            <div class="find-similar"><a href="">找相似</a></div>
-            </li>
-            <li>
-            <a href="">
-                <img src="http://img.hznzcn.com/images/goods_new/20180201/20180201173228071.jpg" class="goods-img" alt="">
-                <div class="goods-message">
-                <div class="keywords-box">
-                    <span class="city">杭州</span>
-                    <span class="state">预售</span>
-                    <span class="keywords">关键词 GJC7711</span>
-                </div>
-                <div class="describe">2018年春季长袖长款修身POLO领时尚韩版气质优雅简约潮流风衣</div>
-                <div class="goods-price">
-                    <span class="cost"><i>￥</i>115.00</span>
-                    <span class="send">闪电发货</span>
-                    <span class="spread">推广</span>
-                </div>
-                <div class="goods-ico">
-                    <span class="ico1">实</span>
-                    <span class="ico2">退</span>
-                    <span class="ico3">厂</span>
-                    <span class="ico4">图</span>
-                </div>
-                </div>        
-            </a>
+            </router-link>
             <div class="find-similar"><a href="">找相似</a></div>
             </li>
         </ul>            

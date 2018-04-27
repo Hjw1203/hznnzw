@@ -58,26 +58,26 @@ import adviceWrite from '@/components/adviceWrite'
 Vue.use(Router);
 export default new Router({
   routes: [
-    // {
-    //   path: '/',
-    //   name: 'index', //首页
-    //   component: index
-    // },
+    {
+      path: '/',
+      name: 'index', //首页
+      component: index
+    },
       {
       path:'/selectSource',
       name:'selectSource', //选择货源地
       component:selectSource
     },
-    // {
-    //     path:'/',
-    //     name:'brandNavigation', //品牌导航
-    //     component:brandNavigation
-    //   },
-      // {
-      //   path:'/',
-      //   name:'application', //填写入驻申请表
-      //   component:application
-      // },
+    {
+        path:'/brandNavigation',
+        name:'brandNavigation', //品牌导航
+        component:brandNavigation
+      },
+      {
+        path:'/application',
+        name:'application', //填写入驻申请表
+        component:application
+      },
       {
         path:'/mainCategory',
         name:'mainCategory', //主营类别
@@ -103,11 +103,11 @@ export default new Router({
         name:'pendingReview', //等待审核
         component:pendingReview
       },
-      // {
-      //   path:'/',
-      //   name:'newHeadlines', //头条资讯
-      //   component:newHeadlines
-      // },
+      {
+        path:'/newHeadlines',
+        name:'newHeadlines', //头条资讯
+        component:newHeadlines
+      },
       {
         path:'/newsDetail',
         name:'newsDetail',  //资讯详情
@@ -123,41 +123,41 @@ export default new Router({
       //   name:'myTracks',    //我的足迹
       //   component:myTracks,
       // },
-      // {
-      //   path:'/',
-      //   name:'category', //分类
-      //   component:category,
-      // },
+      {
+        path:'/category',
+        name:'category', //分类
+        component:category,
+      },
       // {
       //   path:'/',
       //   name:'noTracks',    //暂无浏览记录
       //   component:noTracks,
       // },
-      // {
-      //   path:'/',
-      //   name:'newGoods',  //每日新款
-      //   component:newGoods
-      // },
+      {
+        path:'/newGoods',
+        name:'newGoods',  //每日新款
+        component:newGoods
+      },
       // {
       //   path:'/',
       //   name:'newGoodsBox', //每日新款方格展示
       //   component:newGoodsBox
       // },
-      // {
-      //   path:'/',
-      //   name:'lightningSend', //闪电发货
-      //   component:lightningSend,
-      // },
-      // {
-      //   path:'/',
-      //   name:'productDetail', //商品详情
-      //   component:productDetail,
-      // },
-      // {
-      //   path:'/',
-      //   name:'editProduct', // 编辑商品
-      //   component:editProduct
-      // },
+      {
+        path:'/lightningSend',
+        name:'lightningSend', //闪电发货
+        component:lightningSend,
+      },
+      {
+        path:'/productDetail',
+        name:'productDetail', //商品详情
+        component:productDetail,
+      },
+      {
+        path:'/editProduct',
+        name:'editProduct', // 编辑商品
+        component:editProduct
+      },
       {
         path:'/texture',
         name:'texture', //材质
@@ -198,11 +198,11 @@ export default new Router({
       //   name:'couponBox',   //我的优惠券
       //   component:couponBox,
       // },
-      {
-        path:'/',
-        name:'myOrder',   //我的订单
-        component:myOrder,
-      },
+      // {
+      //   path:'/',
+      //   name:'myOrder',   //我的订单
+      //   component:myOrder,
+      // },
       // {
       //   path:'/',
       //   name:'logistics', //查看物流

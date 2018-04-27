@@ -574,6 +574,7 @@ export default {
     //一键上传
     uploadT() {
         alert('传淘宝...');
+        this.$router.push({path:'/editProduct'})
     },
     uploadA() {
         alert('传阿里...')

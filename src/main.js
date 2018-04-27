@@ -8,10 +8,13 @@ import 'mint-ui/lib/style.css'
 import App from './App'
 import router from './router'
 import './assets/css/public.scss'
+import axios from 'axios'
 
 Vue.use(Mint);
+Vue.prototype.token = 'xiaoxiao';
 Vue.config.productionTip = false
 
+Vue.prototype.$http = axios;
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

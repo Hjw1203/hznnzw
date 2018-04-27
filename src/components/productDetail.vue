@@ -945,7 +945,7 @@ export default {
     a {
         font-family: PingFang SC Medium;
         font-size: 30px;/*px*/
-        corlor: #282828;
+        color: #282828;
         display:block;
         background: url('../assets/images/store@2x.png') no-repeat 39% center;
         background-size: 28px 26px;
